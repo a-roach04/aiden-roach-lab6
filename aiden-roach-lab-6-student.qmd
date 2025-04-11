@@ -17,7 +17,7 @@ The data come to us from [TidyTuesday](https://github.com/rfordatascience/tidytu
 
 ```{r}
 #| label: setup
-
+library(tidyverse)
 ```
 
 ```{r}
@@ -28,7 +28,9 @@ childcare_costs <- read_csv('https://raw.githubusercontent.com/rfordatascience/t
 counties <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-09/counties.csv')
 ```
 
-**1. Briefly describe the dataset (~ 4 sentences). What information does it contain?**
+**1. Briefly describe the dataset (~ 4 sentences). What information does it contain?**        
+
+> The childcare dataset looks at the cost of childcare by county in the United States from 2008 to 2018. The data contains information on unemployment rates by age range and gender, labor force rates by age range and gender, poverty rates, median household income by gender and overall, racial demographics, the number of households, number of workers per household, type of workforce, and cost of childcare by age range. The counties dataset provides a list of the counties that data was supplied for. I thought it was interesting that New Mexico, Indiana, and the majority of Missouri have no data available.
 
 ## California Childcare Costs
 
