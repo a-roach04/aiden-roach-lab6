@@ -111,9 +111,19 @@ ca_childcare |>
 **6. Recreate the plot (look at online instructions) that shows, for all ten regions, the change over time of the full-time median price for center-based childcare for infants, toddlers, and preschoolers. Recreate the plot. You do not have to replicate the exact colors or theme, but your plot should have the same content, including the order of the facets and legend, reader-friendly labels, axes breaks, and a  smooth function.**
 
 
-```{r}
+```{r fig.width = 10}
 #| label: recreate-plot
-
+ca_childcare |>
+  select(region, study_year, mc_infant, mc_toddler, mc_preschool) |>
+  pivot_longer(cols = 3:5, names_to = "age_range", values_to = "median_cost") |>
+  mutate(age_range = recode(age_range, "mc_infant" = "Infant", "mc_toddler" = "Toddler", "mc_preschool" = "Preschool")) |>
+  ggplot(mapping = aes(x = study_year, y = median_cost, color = region)) + 
+  geom_point() +
+  geom_smooth() + 
+  facet_grid(~fct_inorder(age_range)) + 
+  scale_x_continuous(breaks = seq(2008, 2018, 2)) + 
+  labs(title = "Weekly Median Price for Center-Based Childcare ($)", x = "Study Year", color = "California Region", y = "") + 
+  theme_bw()
 ```
 
 
